@@ -10,7 +10,7 @@ body {
     flex-direction: row;
     width: 100vw;
     height: 100vh;
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #333; /* Dark background */
 }
 
 #left-side-container {
@@ -18,18 +18,19 @@ body {
     flex-direction: column;
     width: 40vw;
     height: 100vh;
-    border-right: 2px solid black;
-    background-color: #fff; /* White background */
+    border-right: 2px solid #444; /* Darker border */
+    background-color: #222; /* Darker background */
+    color: #fff; /* White text color */
 }
 
 #left-side-container-navbar {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     width: 40vw;
     column-gap: 10vw;
-    border-bottom: 2px solid black;
-    background-color: #f9f9f9; /* Light gray background */
+    border-bottom: 2px solid #444; /* Darker border */
+    background-color: #111; /* Even darker background */
 }
 
 #left-side-container-searchbar {
@@ -40,16 +41,21 @@ body {
     margin-bottom: 1vh;
     padding-bottom: 1vh;
     column-gap: 1.2vw;
-    border-bottom: 2px solid black;
-    background-color: #f9f9f9; /* Light gray background */
+    border-bottom: 2px solid #444; /* Darker border */
+    
 }
 
 #left-side-container-searchbar input {
     width: 20vw;
+    border-radius: 10.5%;
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text color */
 }
 
 #left-side-container-searchbar button {
     width: 10vw;
+    background-color: #555; /* Darker button color */
+    color: #fff; /* White text color */
 }
 
 /* ///////////////////////////////////////////// */
@@ -57,21 +63,34 @@ body {
 #right-side-container {
     display: flex;
     flex-direction: column;
-    row-gap: 90vh;
+   ;
     width: 60vw;
     height: 100vh;
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #222; /* Darker background */
 }
 
 #right-side-container-navbar {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    
     width: 60vw;
     column-gap: 10vw;
-    border-bottom: 2px solid black;
-    background-color: #f9f9f9; /* Light gray background */
+    border-bottom: 2px solid #444; /* Darker border */
+    background-color: #111; /* Even darker background */
 }
+#messagecontainer {
+    
+    width: 60vw;
+    height: 90vh;
+    padding: 0;
+   
+}
+#messagecontainer h5 {
+    margin-top: 20px;
+    color: whitesmoke;
+   
+}
+
 
 #right-side-container-message {
     display: flex;
@@ -79,15 +98,19 @@ body {
     justify-content: center;
     width: 60vw;
     column-gap: 1vw;
-    background-color: #fff; /* White background */
+   
 }
 
 #right-side-container-message input {
     width: 50vw;
-    height: 3.3vh;
+    height: 4.3vh;
     border-radius: 5.5%;
+    background-color: #333; /* Dark background */
+    color: #fff; /* White text color */
 }
 
 #right-side-container-message button {
     width: 7vw;
+    background-color: #555; /* Darker button color */
+    color: #fff; /* White text color */
 }
