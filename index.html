@@ -11,7 +11,7 @@
     <div id="left-side-container">
         <div id="left-side-container-navbar" >
             <img src="/images/svgviewer-output.png" style="height: 30px; width: 30px;" alt="Image Description">
-            <button type="button" style="text-align: center; width: 15vw; height: 3.5vh; font-weight: 700; " onclick="createuser()">Create User</button>
+            <button id="endpoint" type="button" style="text-align: center; width: 15vw; height: 3.5vh; font-weight: 700; " onclick="createuser()" endpoint="true">Create User</button>
 
         </div>
 
@@ -21,7 +21,8 @@
         </div>
         
         <div  id="left-side-container-users"   >
-            <h4 style="font-size:1.2rem ;border-bottom: 2px solid black;">User</h4>
+            <h4 style="font-size:1.2rem ;border-bottom: 2px solid black;text-align: center; margin-bottom: 10px;"> Online Users</h4>
+            <h4 style="font-size:1.2rem ;border-bottom: 2px solid black;" class="createroom">   User</h4>
         </div>      
     </div>
 <!-- ////////////////////////////////////////////////////////////////////////////////// -->
@@ -54,8 +55,9 @@
            
 
            /* logic 
-              create user first  
-              whenever i will click on a single user container that is in left section 
+              create user first  -- completed
+
+               whenever i will click on a single user container that is in left section 
               first right side navbar pe user id and past messages
               
               then socket.room mein add ho jaaygea voh chiz 
@@ -63,15 +65,26 @@
            */
 
       const socket = io();
-
+           
+      //step 1
       function createuser(){
-             const userid=  prompt("what is user id will be")
-             // this endpoint will always remain same sooo
-             
-             socket.emit("endpoint",{receiver:userid})
-             
+        if(Boolean(document.getElementById("endpoint").hasAttribute("endpoint"))){
+                const userid=  prompt("what is user id will be")
+                // this endpoint will always remain same sooo
+                console.log(Boolean(document.getElementById("endpoint").getAttribute("endpoint")))
+               socket.emit("endpoint",{receiver:userid})
+               document.getElementById("endpoint").removeAttribute("endpoint");
+            }else{
+                alert("you already have existing user")
+            }
+             }
 
-           }
+      //step 2
+       document.querySelector(".createroom").addEventListener("click",(event)=>{
+        console.log(event.target.innerText)
+        socket.emit("joinroom",{room:event.target.innerText})
+       })
+      
     </script>
   </body>
 </html>
