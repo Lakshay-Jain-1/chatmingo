@@ -36,30 +36,23 @@
       </div>
 
       <div id="left-side-container-users">
-        <h4
-          style="
-            font-size: 1.2rem;
-            border-bottom: 2px solid black;
-            text-align: center;
-            margin-bottom: 10px;
-          "
-        >
-          Online Users
+        <h4 style="font-size: 1.2rem; border-bottom: 2px solid black; text-align: center; margin-bottom: 10px;">
+            Online Users
         </h4>
-        <h4
-          style="font-size: 1.2rem; border-bottom: 2px solid black"
-          class="createroom"
-        >
-          User
-        </h4>
-        <h4
-          style="font-size: 1.2rem; border-bottom: 2px solid black"
-          class="createroom"
-        >
-          Lakshay
-        </h4>
-      </div>
+        <h4 class="createroom" style="font-size: 1.2rem;
+        border-bottom: 2px solid black">Trial User 1</h4>
+        
+        <% userarray.forEach((user) => { %>
+          
+                <h4 class="createroom" style="font-size: 1.2rem;
+                border-bottom: 2px solid black"><%= user %></h4>
+         
+            
+        <% }); %>
+        
     </div>
+    </div>
+       
     <!-- ////////////////////////////////////////////////////////////////////////////////// -->
     <div id="right-side-container">
       <div id="right-side-container-navbar">
@@ -108,6 +101,7 @@
           );
           socket.emit("endpoint", { receiver: userid });
           document.getElementById("endpoint").removeAttribute("endpoint");
+          
         } else {
           alert("you already have existing user");
         }
@@ -116,9 +110,10 @@
       //step 2
       document.querySelectorAll(".createroom").forEach((ele) => {
         ele.addEventListener("click", (event) => {
-          
-          document.getElementById("receiver_user").innerText =event.target.innerText;
-          document.getElementById("messagecontainer").innerHTML=``
+          console.log(event.target.innerText);
+          document.getElementById("receiver_user").innerText =
+            event.target.innerText;
+          document.getElementById("messagecontainer").innerHTML = ``;
           socket.emit("joinroom", { room: event.target.innerText });
         });
       });
@@ -132,18 +127,16 @@
       }
 
       socket.on("message_recieved", (text) => {
-       appendmessage(text.message)
-      
+        appendmessage(text.message);
       });
-       
-      function appendmessage(data){
+
+      function appendmessage(data) {
         const textnode = document.createTextNode(data);
         const element = document.createElement("h5");
 
         element.append(textnode);
         document.getElementById("messagecontainer").appendChild(element);
       }
-
     </script>
   </body>
 </html>
