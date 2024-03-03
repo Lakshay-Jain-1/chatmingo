@@ -1,0 +1,11 @@
+Now i will explain  the logic 
+
+
+whenever i click on the Create that is on the left-top side , i emit an event called endpoint with a room in server side i store it in socket.endpoint
+as it will always remain same
+
+whenever i click on left side (online users)
+I emit an event joinroom where in server side first i exit any existing room that have i joined and then i join and also do this i store it in socket.room so that i can access in server side without a hassle
+
+On right side when i click on send it emits an event message that in server side it will go like this io.to(socket.room).emit("",{})
+in client side i will recieve it to append the text 
